@@ -33,7 +33,6 @@ func ReadInput(scanner bufio.Scanner) Inputs {
 		}
 
 		i = append(i, t)
-		fmt.Println(t)
 	}
 
 	return i
