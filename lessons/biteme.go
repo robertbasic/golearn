@@ -26,7 +26,7 @@ func ReadLinesByteByByte() {
 			log.Fatalln(err)
 		}
 
-		fmt.Println(fmt.Sprintf("%d\t%#U\t%t", b, b, b == '\n'))
+		log.Println(fmt.Sprintf("%d\t%#U\t%t", b, b, b == '\n'))
 	}
 }
 
@@ -35,6 +35,8 @@ func ReadLinesByteByByte() {
 func ReadLineByLine() {
 	br := bufio.NewReader(strings.NewReader(lines))
 
+	var lines []string
+
 	for {
 		l, err := br.ReadBytes('\n')
 
@@ -42,18 +44,22 @@ func ReadLineByLine() {
 			log.Fatalln(err)
 		}
 
-		fmt.Println(l)
+		lines = append(lines, strings.TrimSpace(string(l)))
 
 		if err == io.EOF {
 			break
 		}
 	}
+
+	log.Println(lines)
 }
 
 // ReadLineByLineAsString reads a multiline string
 // line by line as a string
 func ReadLineByLineAsString() {
 	br := bufio.NewReader(strings.NewReader(lines))
+
+	var lines []string
 
 	for {
 		// Includes the delimiter
@@ -64,12 +70,14 @@ func ReadLineByLineAsString() {
 		}
 
 		// Trimming space to remove the delimiter at the end
-		fmt.Println(strings.TrimSpace(l))
+		lines = append(lines, strings.TrimSpace(l))
 
 		if err == io.EOF {
 			break
 		}
 	}
+
+	log.Println(lines)
 }
 
 // ReadLineByLineWithAnonFunc reads a multiline string
@@ -98,5 +106,5 @@ func ReadLineByLineWithAnonFunc() {
 		}
 	}
 
-	fmt.Println(lines)
+	log.Println(lines)
 }
