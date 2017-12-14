@@ -9,7 +9,12 @@ import (
 )
 
 func main() {
-	readTodo()
+	lessons.ReadLinesByteByByte()
+	lessons.ReadLineByLine()
+	lessons.ReadLineByLineAsString()
+	lessons.ReadLineByLineWithAnonFunc()
+
+	// readTodo()
 }
 
 func readTodo() {
