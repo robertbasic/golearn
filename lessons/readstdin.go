@@ -1,31 +1,15 @@
-package main
+package lessons
 
 import (
 	"bufio"
 	"fmt"
 	"io"
-	"log"
-	"os"
 )
 
-func main() {
-	todo, err := readTodo(os.Stdin)
-	if err != nil {
-		log.Fatalf("failed at reading todo: %s", err)
-	}
-
-	fmt.Printf("Got %d inputs from stdin:\n", len(todo))
-
-	err = printTodo(todo, os.Stdout)
-	if err != nil {
-		log.Fatalf("failed at printing todo: %s", err)
-	}
-}
-
-// readTodo reads in Inputs from the given reader,
+// ReadTodo reads in Inputs from the given reader,
 // until it gets an empty line
 // and puts them into a slice of strings
-func readTodo(input io.Reader) ([]string, error) {
+func ReadTodo(input io.Reader) ([]string, error) {
 	var todo []string
 
 	scanner := bufio.NewScanner(input)
@@ -48,7 +32,8 @@ func readTodo(input io.Reader) ([]string, error) {
 	return todo, nil
 }
 
-func printTodo(todo []string, output io.Writer) error {
+// PrintTodo prints the slice of todos
+func PrintTodo(todo []string, output io.Writer) error {
 	for _, v := range todo {
 		_, err := fmt.Fprintln(output, v)
 		if err != nil {

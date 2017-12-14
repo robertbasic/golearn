@@ -1,4 +1,4 @@
-package main
+package lessons
 
 import (
 	"bytes"
@@ -11,13 +11,13 @@ func TestInputOutput(t *testing.T) {
 Second todo
 Third todo
 `
-	todo, err := readTodo(strings.NewReader(sample))
+	todo, err := ReadTodo(strings.NewReader(sample))
 	if err != nil {
 		t.Errorf("unexpected error %q", err)
 	}
 
 	var buf bytes.Buffer
-	err = printTodo(todo, &buf)
+	err = PrintTodo(todo, &buf)
 	if err != nil {
 		t.Errorf("unexpected error %q", err)
 	}
