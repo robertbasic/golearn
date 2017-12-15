@@ -112,7 +112,8 @@ func ReadLineByLineWithAnonFunc() {
 
 // ReadFile reads a file
 func ReadFile() {
-	file, err := getFile()
+	file, err := os.Open(getFile())
+	defer file.Close()
 	if err != nil {
 		log.Fatalln(err)
 	}
@@ -140,18 +141,12 @@ func ReadFile() {
 	log.Println(lines)
 }
 
-func getFile() (io.Reader, error) {
+func getFile() string {
 	wd, _ := os.Getwd()
 
 	if !strings.HasSuffix(wd, "lessons") {
 		wd += "/lessons"
 	}
 
-	file, err := os.Open(wd + "/biteme.txt")
-
-	if err != nil {
-		return nil, err
-	}
-
-	return file, nil
+	return wd + "/biteme.txt"
 }
