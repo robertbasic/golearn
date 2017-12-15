@@ -1,8 +1,10 @@
 package lessons
 
-import "testing"
-import "log"
-import "io/ioutil"
+import (
+	"io/ioutil"
+	"log"
+	"testing"
+)
 
 func BenchmarkReadLineByLine(b *testing.B) {
 
@@ -25,5 +27,13 @@ func BenchmarkReadLineByLineWithAnonFunc(b *testing.B) {
 
 	for n := 0; n < b.N; n++ {
 		ReadLineByLineWithAnonFunc()
+	}
+}
+
+func BenchmarkReadFile(b *testing.B) {
+	log.SetOutput(ioutil.Discard)
+
+	for n := 0; n < b.N; n++ {
+		ReadFile()
 	}
 }

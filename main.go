@@ -13,6 +13,7 @@ func main() {
 	lessons.ReadLineByLine()
 	lessons.ReadLineByLineAsString()
 	lessons.ReadLineByLineWithAnonFunc()
+	lessons.ReadFile()
 
 	// readTodo()
 }

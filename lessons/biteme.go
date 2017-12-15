@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"io"
 	"log"
+	"os"
 	"strings"
 )
 
@@ -107,4 +108,50 @@ func ReadLineByLineWithAnonFunc() {
 	}
 
 	log.Println(lines)
+}
+
+// ReadFile reads a file
+func ReadFile() {
+	file, err := getFile()
+	if err != nil {
+		log.Fatalln(err)
+	}
+
+	br := bufio.NewReader(file)
+
+	var lines []string
+
+	for {
+		// Includes the delimiter
+		l, err := br.ReadString('\n')
+
+		if err != nil && err != io.EOF {
+			log.Fatalln(err)
+		}
+
+		// Trimming space to remove the delimiter at the end
+		lines = append(lines, strings.TrimSpace(l))
+
+		if err == io.EOF {
+			break
+		}
+	}
+
+	log.Println(lines)
+}
+
+func getFile() (io.Reader, error) {
+	wd, _ := os.Getwd()
+
+	if !strings.HasSuffix(wd, "lessons") {
+		wd += "/lessons"
+	}
+
+	file, err := os.Open(wd + "/biteme.txt")
+
+	if err != nil {
+		return nil, err
+	}
+
+	return file, nil
 }
