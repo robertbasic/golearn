@@ -37,3 +37,11 @@ func BenchmarkReadFile(b *testing.B) {
 		ReadFile()
 	}
 }
+
+func BenchmarkReadFileWithScanner(b *testing.B) {
+	log.SetOutput(ioutil.Discard)
+
+	for n := 0; n < b.N; n++ {
+		ReadFileWithScanner()
+	}
+}

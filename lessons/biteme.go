@@ -141,6 +141,26 @@ func ReadFile() {
 	log.Println(lines)
 }
 
+// ReadFileWithScanner reads a file with a scanner
+func ReadFileWithScanner() {
+	file, err := os.Open(getFile())
+	defer file.Close()
+	if err != nil {
+		log.Fatalln(err)
+	}
+
+	var lines []string
+
+	sc := bufio.NewScanner(file)
+	for sc.Scan() {
+		l := sc.Text()
+
+		lines = append(lines, strings.TrimSpace(l))
+	}
+
+	log.Println(lines)
+}
+
 func getFile() string {
 	wd, _ := os.Getwd()
 
