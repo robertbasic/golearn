@@ -110,6 +110,21 @@ func ReadLineByLineWithAnonFunc() {
 	log.Println(lines)
 }
 
+// ReadLinesWithScanner reads lines with a scanner
+func ReadLinesWithScanner() {
+	sc := bufio.NewScanner(strings.NewReader(lines))
+
+	var lines []string
+
+	for sc.Scan() {
+		l := sc.Text()
+
+		lines = append(lines, strings.TrimSpace(l))
+	}
+
+	log.Println(lines)
+}
+
 // ReadFile reads a file
 func ReadFile() {
 	file, err := os.Open(getFile())

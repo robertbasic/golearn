@@ -13,7 +13,9 @@ func main() {
 	lessons.ReadLineByLine()
 	lessons.ReadLineByLineAsString()
 	lessons.ReadLineByLineWithAnonFunc()
+	lessons.ReadLinesWithScanner()
 	lessons.ReadFile()
+	lessons.ReadFileWithScanner()
 
 	// readTodo()
 }

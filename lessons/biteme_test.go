@@ -30,6 +30,14 @@ func BenchmarkReadLineByLineWithAnonFunc(b *testing.B) {
 	}
 }
 
+func BenchmarkReadLinesWithScanner(b *testing.B) {
+	log.SetOutput(ioutil.Discard)
+
+	for n := 0; n < b.N; n++ {
+		ReadLinesWithScanner()
+	}
+}
+
 func BenchmarkReadFile(b *testing.B) {
 	log.SetOutput(ioutil.Discard)
 
