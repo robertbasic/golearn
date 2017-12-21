@@ -1,17 +1,27 @@
 package lessons
 
-import "log"
+import (
+	"log"
+	"fmt"
+)
 
 func RunGenerator() {
-	c := make(chan int)
-
-	go gen(c)
-
-	log.Println(<-c)
+	for i := range numgenc(100) {
+		log.Println(fmt.Sprintf("%T", i))
+		log.Println(i)
+	}
 }
 
-func gen(c chan int) {
-	for i := 0; i < 100; i++ {
-		c <- i
-	}
+func numgenc(l int) chan int {
+	c := make(chan int)
+
+	go func() {
+		defer close(c)
+
+		for i := 0; i < l; i++ {
+			c <- i*2
+		}
+	}()
+
+	return c
 }

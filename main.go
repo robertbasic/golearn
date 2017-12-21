@@ -4,18 +4,23 @@ import (
 	"fmt"
 	"log"
 	"os"
-
 	"github.com/robertbasic/golearn/lessons"
 )
 
 func main() {
-	lessons.ReadLinesByteByByte()
-	lessons.ReadLineByLine()
-	lessons.ReadLineByLineAsString()
-	lessons.ReadLineByLineWithAnonFunc()
-	lessons.ReadLinesWithScanner()
-	lessons.ReadFile()
-	lessons.ReadFileWithScanner()
+	// lessons.ReadLinesByteByByte()
+	// lessons.ReadLineByLine()
+	// lessons.ReadLineByLineAsString()
+	// lessons.ReadLineByLineWithAnonFunc()
+	// lessons.ReadLinesWithScanner()
+	// lessons.ReadFile()
+	// lessons.ReadFileWithScanner()
+
+	// lessons.RoutinesWaitGroup()
+	//lessons.RoutinesWaitChannel()
+	//lessons.RoutineTalk()
+
+	lessons.RunGenerator()
 
 	// readTodo()
 }
