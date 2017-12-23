@@ -16,13 +16,17 @@ func main() {
 	// lessons.ReadFile()
 	// lessons.ReadFileWithScanner()
 
+	//lessons.ReadCsvLine()
+
 	// lessons.RoutinesWaitGroup()
 	//lessons.RoutinesWaitChannel()
 	//lessons.RoutineTalk()
 
-	lessons.RunGenerator()
+	//lessons.RunGenerator()
 
 	// readTodo()
+
+	lessons.TalkingGos()
 }
 
 func readTodo() {
