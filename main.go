@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"log"
 	"os"
+
 	"github.com/robertbasic/golearn/lessons"
 )
 
@@ -26,7 +27,9 @@ func main() {
 
 	// readTodo()
 
-	lessons.TalkingGos()
+	//lessons.TalkingGos()
+
+	lessons.RunHTTPServer()
 }
 
 func readTodo() {
